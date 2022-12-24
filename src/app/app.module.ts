@@ -27,13 +27,13 @@ import { NgxPrintElementModule } from 'ngx-print-element';
     CarteProfessionnelleComponent,
   ],
   imports: [
-    NgxPrintElementModule,
+
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-   
+
     EffectsModule.forRoot([UserEffects]),
     StoreModule.forRoot({
       user: UserReducer,
