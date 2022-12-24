@@ -7,7 +7,7 @@
 .containerr {
   height: 100vh;
   width: 100%;
-  display: flex;
+  display: grid;
   align-items: center;
   justify-content: center;
   background-color: #e6ebe0;
@@ -129,6 +129,19 @@
 }
 .padding{
   padding-right: 20px;
+}
+
+.btnRegister{
+  float: right;
+  margin-top: 10%;
+  border: none;
+  border-radius: 1.5rem;
+  padding: 2%;
+  background: #0062cc;
+  color: #fff;
+  font-weight: 600;
+ 
+  cursor: pointer;
 }
 
 @media screen and (max-width:400px)

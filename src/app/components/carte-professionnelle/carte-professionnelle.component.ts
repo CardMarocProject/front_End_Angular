@@ -31,4 +31,5 @@ export class CarteProfessionnelleComponent implements OnInit {
       console.log(this.data);
     });
   }
+  print(){}
 }
