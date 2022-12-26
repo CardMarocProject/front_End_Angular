@@ -1,83 +1,91 @@
-<div class="containerr" *ngIf="user" id="print">
-  <div class="padding">
-    <div class="font">
-      <div class="top">
-        <div class="col-12 text-white p-3">
-          <h5 class="d-flex justify-content-center">البطاقة المهنية</h5>
-          <h5 class="d-flex justify-content-center">cart professionnelle</h5>
+<div class="all h-100 w-100 d-flex justify-content-center align-items-center">
+  <div
+    class="tp-box containerr m-auto"
+    *ngIf="user"
+    id="print"
+    (click)="toggleFlip()"
+    [@flipState]="flip"
+  >
+    <div class="padding tp-box__front tp-box__side">
+      <div class="font">
+        <div class="top">
+          <div class="col-12 text-white p-3">
+            <h5 class="d-flex justify-content-center">البطاقة المهنية</h5>
+            <h5 class="d-flex justify-content-center">cart professionnelle</h5>
+          </div>
         </div>
-      </div>
 
-      <div class="bottom">
-        <div class="row">
-          <div class="col-2 justify-content-center">
-            <h6 class="d-flex justify-content-center">
-              N°: <samp> {{ user.cin }}</samp>
-            </h6>
-            <img src="assets/download.png" width="120" />
-            <h6 class="d-flex justify-content-center">
-              <samp>{{ user.cin }}</samp>
-            </h6>
-          </div>
-          <div class="col d-flex justify-content-end">
-            <table class="">
-              <tbody>
-                <tr>
-                  <th scope="row" class="px-3">Prenom :</th>
-                  <td class="px-3">{{ user.firstName }}</td>
-                  <td class="px-3">{{ user.arabiceFirstName }}</td>
-                  <th scope="row" class="px-3">: الاسم الشحصي</th>
-                </tr>
-                <tr>
-                  <th scope="row" class="px-3">Nom :</th>
-                  <td class="px-3">{{ user.lastName }}</td>
-                  <td class="px-3">{{ user.arabicLastName }}</td>
-                  <th scope="row" class="px-3">: الاسم العائيلي</th>
-                </tr>
-                <tr>
-                  <th scope="row" class="px-3">Profession :</th>
-                  <td class="px-3">{{ user.profession }}</td>
-                  <td class="px-3">{{ user.birthdayDate }}</td>
-                  <th scope="row" class="px-3">: تاريخ الازدياد</th>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+        <div class="bottom">
+          <div class="row">
+            <div class="col-2 justify-content-center">
+              <h6 class="d-flex justify-content-center">
+                N°: <samp> {{ user.cin }}</samp>
+              </h6>
+              <img src="assets/download.png" width="120" />
+              <h6 class="d-flex justify-content-center">
+                <samp>{{ user.cin }}</samp>
+              </h6>
+            </div>
+            <div class="col d-flex justify-content-end">
+              <table class="">
+                <tbody>
+                  <tr>
+                    <th scope="row" class="px-3">Prenom :</th>
+                    <td class="px-3">{{ user.firstName }}</td>
+                    <td class="px-3">{{ user.arabiceFirstName }}</td>
+                    <th scope="row" class="px-3">: الاسم الشحصي</th>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="px-3">Nom :</th>
+                    <td class="px-3">{{ user.lastName }}</td>
+                    <td class="px-3">{{ user.arabicLastName }}</td>
+                    <th scope="row" class="px-3">: الاسم العائيلي</th>
+                  </tr>
+                  <tr>
+                    <th scope="row" class="px-3">Profession :</th>
+                    <td class="px-3">{{ user.profession }}</td>
+                    <td class="px-3">{{ user.birthdayDate }}</td>
+                    <th scope="row" class="px-3">: تاريخ الازدياد</th>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
-          <div class="d-flex justify-content-center">
-            <img src="assets/signature-40122.png" width="150" />
-          </div>
-          <div class="d-flex justify-content-center">
-            <h6>
-              <span>Valabe jusqu'au </span><span>27/06/2024</span
-              ><span> صالحة الى غاية </span>
-            </h6>
+            <div class="d-flex justify-content-center">
+              <img src="assets/signature-40122.png" width="150" />
+            </div>
+            <div class="d-flex justify-content-center">
+              <h6>
+                <span>Valabe jusqu'au </span><span>27/06/2024</span
+                ><span> صالحة الى غاية </span>
+              </h6>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="padding">
-    <div class="font">
-      <div class="top">
-        <div class="col-12 text-white p-3">
-          <!-- <h5 class="d-flex justify-content-center"> البطاقة المهنية</h5>
+    <div class="padding tp-box__back tp-box__side">
+      <div class="font">
+        <div class="top">
+          <div class="col-12 text-white p-3">
+            <!-- <h5 class="d-flex justify-content-center"> البطاقة المهنية</h5>
                       <h5 class="d-flex justify-content-center"> cart professionnelle </h5> -->
+          </div>
         </div>
-      </div>
 
-      <div class="bottom">
-        <div class="d-flex justify-content-center">
-          <img
-            src="data:image/png;base64,{{ data }}"
-            width="200"
-            class="barcod"
-          />
+        <div class="bottom">
+          <div class="d-flex justify-content-center">
+            <img
+              src="data:image/png;base64,{{ data }}"
+              width="200"
+              class="barcod"
+            />
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="">
-    <button class="btnRegister" printSectionId="print" ngxPrint>Print</button>
+    <!-- <div class=""> -->
+    <!-- <button class="btnRegister" printSectionId="print" ngxPrint>Print</button> -->
+    <!-- </div> -->
   </div>
 </div>

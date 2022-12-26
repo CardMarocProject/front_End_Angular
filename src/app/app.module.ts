@@ -17,8 +17,8 @@ import { UserEffects } from './state/user/user.effects';
 import { environment } from 'src/environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { NgxPrintElementModule } from 'ngx-print-element';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +27,7 @@ import { NgxPrintElementModule } from 'ngx-print-element';
     CarteProfessionnelleComponent,
   ],
   imports: [
-
+    BrowserAnimationsModule,
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
