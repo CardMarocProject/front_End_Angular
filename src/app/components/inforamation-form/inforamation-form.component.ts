@@ -1,5 +1,5 @@
 import { UserService } from './../../service/user/user.service';
-import { addUser } from './../../state/user/user.actions';
+import { Store } from '@ngrx/store';
 import { IUser } from './../../models/interfaces/user.interface';
 import { Component, OnInit } from '@angular/core';
 import {
@@ -8,14 +8,16 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { addUser } from 'src/app/state/user/user.actions';
 
-import { Store } from '@ngrx/store';
 @Component({
-  selector: 'app-form-body',
-  templateUrl: './form-body.component.html',
-  styleUrls: ['./form-body.component.css'],
+  selector: 'app-inforamation-form',
+  templateUrl: './inforamation-form.component.html',
+  styleUrls: ['./inforamation-form.component.css'],
 })
-export class FormBodyComponent implements OnInit {
+export class InforamationFormComponent implements OnInit {
+  profile_picture: any = 'http://i.pravatar.cc/500?img=7';
+  model: any = {};
   user: IUser = {};
   postResponse: any;
   successResponse?: string;
@@ -90,6 +92,18 @@ export class FormBodyComponent implements OnInit {
     if (this.user != undefined) {
       this.user.img = val.target.files[0] as File;
       console.log(this.user.img);
+    }
+  }
+
+  fileChange(event: any) {
+    if (event.target.files) {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.profile_picture = reader.result;
+      };
+      this.addPictures(event);
     }
   }
   writeNameUser() {}

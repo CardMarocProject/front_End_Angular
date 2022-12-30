@@ -12,19 +12,20 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 
-import { FormBodyComponent } from './components/form-body/form-body.component';
 import { UserEffects } from './state/user/user.effects';
 import { environment } from 'src/environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InforamationFormComponent } from './components/inforamation-form/inforamation-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ComponentsComponent,
-    FormBodyComponent,
+
     CarteProfessionnelleComponent,
+    InforamationFormComponent,
   ],
   imports: [
     BrowserAnimationsModule,

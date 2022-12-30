@@ -1,0 +1,345 @@
+<div
+  class="wrapper"
+  style="background-image: url('../../../assets/bg-registration-form-2.jpg')"
+>
+  <div class="inner d-flex justify-content-center shadow-lg">
+    <form (ngSubmit)="createUser()" [formGroup]="userCreationForm">
+      <h3>Registration Form</h3>
+      <div class="containerImage">
+        <h1>profile picture</h1>
+        <div class="avatar-upload">
+          <div class="avatar-edit">
+            <input
+              type="file"
+              id="imageUpload"
+              name="image"
+              [(ngModel)]="model.image"
+              (change)="fileChange($event)"
+              accept=".png, .jpg, .jpeg"
+            />
+            <label for="imageUpload"></label>
+          </div>
+          <div class="avatar-preview">
+            <div
+              id="imagePreview"
+              style="background-image: url({{profile_picture}})"
+            ></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="form-wrapper">
+          <label for="">Last Name</label>
+          <input
+            type="text"
+            type="text"
+            class="form-control"
+            placeholder="Nom *"
+            value=""
+            (keyup)="writeNameUser()"
+            formControlName="nom"
+            required
+            [class.is-invalid]="
+              userCreationForm.get('nom')?.invalid &&
+              userCreationForm.get('nom')?.touched
+            "
+          />
+          <div
+            *ngIf="
+              (userCreationForm.get('nom')?.invalid &&
+                userCreationForm.get('nom')?.touched) ||
+              userCreationForm.get('nom')?.dirty
+            "
+          >
+            <small
+              class="text-danger"
+              *ngIf="
+              userCreationForm.get(
+                'nom'
+              )?.errors?.['required']
+            "
+              >nom required</small
+            >
+            <small
+              class="text-danger"
+              *ngIf="
+              userCreationForm.get(
+                'nom'
+              )?.errors?.['nom']
+            "
+              >nom is invalid</small
+            >
+          </div>
+        </div>
+        <div class="form-wrapper">
+          <label for="">النسب</label>
+          <input
+            type="text"
+            type="text"
+            class="form-control"
+            placeholder="* النسب "
+            (keyup)="writeArabicLNameUser()"
+            formControlName="nom_arabic"
+            required
+            [class.is-invalid]="
+              userCreationForm.get('nom_arabic')?.invalid &&
+              userCreationForm.get('nom_arabic')?.touched
+            "
+          />
+          <!-- NOM VALIDATION -->
+          <div
+            *ngIf="
+              (userCreationForm.get('nom_arabic')?.invalid &&
+                userCreationForm.get('nom_arabic')?.touched) ||
+              userCreationForm.get('nom_arabic')?.dirty
+            "
+          >
+            <small
+              class="text-danger"
+              *ngIf="
+              userCreationForm.get(
+                'nom_arabic'
+              )?.errors?.['required']
+            "
+              >النسب required</small
+            >
+            <small
+              class="text-danger"
+              *ngIf="
+              userCreationForm.get(
+                'nom_arabic'
+              )?.errors?.['nom_arabic']
+            "
+              >النسب is invalid</small
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="form-wrapper">
+          <label for="">First Name</label>
+          <input
+            type="text"
+            placeholder="Prénom *"
+            class="form-control"
+            value=""
+            (keyup)="writeLastNameUser()"
+            formControlName="prenom"
+            required
+            [class.is-invalid]="
+              userCreationForm.get('prenom')?.invalid &&
+              userCreationForm.get('prenom')?.touched
+            "
+          />
+          <!-- NOM VALIDATION -->
+          <div
+            *ngIf="
+              (userCreationForm.get('prenom')?.invalid &&
+                userCreationForm.get('prenom')?.touched) ||
+              userCreationForm.get('prenom')?.dirty
+            "
+          >
+            <small
+              class="text-danger"
+              *ngIf="
+              userCreationForm.get(
+                'prenom'
+              )?.errors?.['required']
+            "
+              >prenom required</small
+            >
+            <small
+              class="text-danger"
+              *ngIf="
+              userCreationForm.get(
+                'prenom'
+              )?.errors?.['prenom']
+            "
+              >prenom invalid</small
+            >
+          </div>
+        </div>
+        <div class="form-wrapper">
+          <label for="">الاسم الاول</label>
+          <input
+            type="text"
+            placeholder="* الاسم الاول"
+            (keyup)="writeArabicfNameUser()"
+            formControlName="prenom_arabic"
+            class="form-control"
+            required
+            [class.is-invalid]="
+              userCreationForm.get('prenom_arabic')?.invalid &&
+              userCreationForm.get('prenom_arabic')?.touched
+            "
+          />
+          <!-- NOM VALIDATION -->
+          <div
+            *ngIf="
+              (userCreationForm.get('prenom_arabic')?.invalid &&
+                userCreationForm.get('prenom_arabic')?.touched) ||
+              userCreationForm.get('prenom_arabic')?.dirty
+            "
+          >
+            <small
+              class="text-danger"
+              *ngIf="
+              userCreationForm.get(
+                'prenom_arabic'
+              )?.errors?.['required']
+            "
+              >الاسم الاول required</small
+            >
+            <small
+              class="text-danger"
+              *ngIf="
+              userCreationForm.get(
+                'prenom_arabic'
+              )?.errors?.['prenom_arabic']
+            "
+              >الاسم الاول is invalid</small
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="form-wrapper">
+        <label for="">Profession</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Professin *"
+          value=""
+          (keyup)="writeProfessionUser()"
+          formControlName="profession"
+          required
+          [class.is-invalid]="
+            userCreationForm.get('profession')?.invalid &&
+            userCreationForm.get('profession')?.touched
+          "
+        />
+        <!-- NOM VALIDATION -->
+        <div
+          *ngIf="
+            (userCreationForm.get('profession')?.invalid &&
+              userCreationForm.get('profession')?.touched) ||
+            userCreationForm.get('profession')?.dirty
+          "
+        >
+          <small
+            class="text-danger"
+            *ngIf="
+            userCreationForm.get(
+              'profession'
+            )?.errors?.['required']
+          "
+            >profession required</small
+          >
+          <small
+            class="text-danger"
+            *ngIf="
+            userCreationForm.get(
+              'profession'
+            )?.errors?.['profession']
+          "
+            >profession invalid</small
+          >
+        </div>
+      </div>
+      <div class="form-wrapper">
+        <label for="">Cin </label>
+        <input
+          type="password"
+          class="form-control"
+          placeholder="CIN *"
+          value=""
+          (keyup)="writeCinUser()"
+          formControlName="cin"
+          required
+          [class.is-invalid]="
+            userCreationForm.get('cin')?.invalid &&
+            userCreationForm.get('cin')?.touched
+          "
+        />
+        <!-- NOM VALIDATION -->
+        <div
+          *ngIf="
+            (userCreationForm.get('cin')?.invalid &&
+              userCreationForm.get('cin')?.touched) ||
+            userCreationForm.get('cin')?.dirty
+          "
+        >
+          <small
+            class="text-danger"
+            *ngIf="
+            userCreationForm.get(
+              'cin'
+            )?.errors?.['required']
+          "
+            >cin required</small
+          >
+          <small
+            class="text-danger"
+            *ngIf="
+            userCreationForm.get(
+              'cin'
+            )?.errors?.['cin']
+          "
+            >cin invalid</small
+          >
+        </div>
+      </div>
+      <div class="form-wrapper">
+        <label for=""> Type de la carte :</label>
+        <select class="form-control">
+          <option class="hidden" selected disabled>Type de la carte :</option>
+          <option value="A">A</option>
+          <option value="B">B</option>
+        </select>
+      </div>
+      <div class="form-wrapper">
+        <label for="">Date de naissanc</label>
+        <input
+          type="date"
+          class="form-control"
+          formControlName="birthday_date"
+          required
+          [class.is-invalid]="
+            userCreationForm.get('birthday_date')?.invalid &&
+            userCreationForm.get('birthday_date')?.touched
+          "
+        />
+        <!-- NOM VALIDATION -->
+        <div
+          *ngIf="
+            (userCreationForm.get('birthday_date')?.invalid &&
+              userCreationForm.get('birthday_date')?.touched) ||
+            userCreationForm.get('birthday_date')?.dirty
+          "
+        >
+          <small
+            class="text-danger"
+            *ngIf="
+            userCreationForm.get(
+              'birthday_date'
+            )?.errors?.['required']
+          "
+            >birthday date is required</small
+          >
+          <small
+            class="text-danger"
+            *ngIf="
+            userCreationForm.get(
+              'birthday_date'
+            )?.errors?.['birthday_date']
+          "
+            >birthday date is invalid</small
+          >
+        </div>
+      </div>
+      <button type="submit">Register Now</button>
+    </form>
+  </div>
+</div>
