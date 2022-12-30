@@ -19,7 +19,7 @@ export class UserService {
       })
     );
     formData.append('image', image, image.name);
-
+    console.log(environment.host + 'api/v1/user');
     return this.http.post(environment.host + 'api/v1/user', formData, {
       responseType: 'text',
     });
