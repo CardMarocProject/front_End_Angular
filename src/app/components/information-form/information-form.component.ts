@@ -12,11 +12,11 @@ import {
 import { addUser } from 'src/app/state/user/user.actions';
 
 @Component({
-  selector: 'app-inforamation-form',
-  templateUrl: './inforamation-form.component.html',
-  styleUrls: ['./inforamation-form.component.css'],
+  selector: 'app-information-form',
+  templateUrl: './information-form.component.html',
+  styleUrls: ['./information-form.component.css'],
 })
-export class InforamationFormComponent implements OnInit {
+export class InformationFormComponent implements OnInit {
   profile_picture: any = 'http://i.pravatar.cc/500?img=7';
   model: any = {};
   user: IUser = {};

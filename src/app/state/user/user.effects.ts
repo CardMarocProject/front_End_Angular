@@ -40,7 +40,7 @@ export class UserEffects {
       this.actions.pipe(
         ofType(UserActionTypes.ADD_SUCCESS),
         tap((data) => {
-          this.router.navigate(['/cartePro']);
+          this.router.navigate(['/job-card']);
         })
       ),
     { dispatch: false }
