@@ -1,3 +1,4 @@
+import { IUser } from './../../models/interfaces/user.interface';
 import { UserService } from '../../service/user/user.service';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
@@ -5,7 +6,13 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 
-import { UserActionTypes, addUserSuccess, addUserFailed } from './user.actions';
+import {
+  UserActionTypes,
+  addUserSuccess,
+  addUserFailed,
+  getUserSuccess,
+  getUserFailed,
+} from './user.actions';
 
 @Injectable()
 export class UserEffects {
@@ -21,7 +28,7 @@ export class UserEffects {
       switchMap((action: any) => {
         console.log(action.user);
         return this.userService.save(action.user, action.user.img).pipe(
-          map((data ) => addUserSuccess({ data })),
+          map((data) => addUserSuccess({ data })),
           catchError((err) => of(addUserFailed(err.message)))
         );
       })
@@ -33,8 +40,6 @@ export class UserEffects {
       this.actions.pipe(
         ofType(UserActionTypes.ADD_SUCCESS),
         tap((data) => {
-          console.log('wa zbi ');
-          console.log(data);
           this.router.navigate(['/cartePro']);
         })
       ),
@@ -50,5 +55,18 @@ export class UserEffects {
         })
       ),
     { dispatch: false }
+  );
+  //get user by cin
+  GetUsertEffect = createEffect(() =>
+    this.actions.pipe(
+      ofType(UserActionTypes.GET),
+      switchMap((action: any) => {
+        console.log(action.user);
+        return this.userService.getUserByCin(action.cin).pipe(
+          map((user) => getUserSuccess({ user })),
+          catchError((err) => of(getUserFailed(err.message)))
+        );
+      })
+    )
   );
 }

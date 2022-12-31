@@ -1,3 +1,4 @@
+import { getUser } from './../../state/user/user.actions';
 import { UserService } from './../../service/user/user.service';
 import { Store } from '@ngrx/store';
 import { IUser } from './../../models/interfaces/user.interface';
@@ -51,9 +52,7 @@ export class InforamationFormComponent implements OnInit {
     });
   }
   prepareuser() {
-    console.log('outside zabi');
     if (this.user != undefined) {
-      console.log('wtf inside ');
       this.user.firstName = this.userCreationForm.get('nom')?.value;
       this.user.lastName = this.userCreationForm.get('prenom')?.value;
       this.user.profession = this.userCreationForm.get('profession')?.value;
@@ -68,21 +67,8 @@ export class InforamationFormComponent implements OnInit {
   }
   createUser() {
     this.prepareuser();
-    console.log(this.user);
     if (this.user != undefined && this.user.img != undefined) {
       this.store.dispatch(addUser({ user: this.user }));
-
-      // this.userservice.save(this.user, this.user.img).subscribe((response) => {
-      //   if (response.status === 200) {
-      //     console.log(response);
-      //     this.postResponse = response;
-      //     this.successResponse = this.postResponse.body;
-      //     console.log(this.postResponse.body);
-      //   } else {
-      //     console.log(response);
-      //     this.successResponse = ' some error!';
-      //   }
-      // });
     }
   }
 

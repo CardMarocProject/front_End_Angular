@@ -1,6 +1,13 @@
 import { IUser } from './../../models/interfaces/user.interface';
 import { Action, createReducer, on } from '@ngrx/store';
-import { addUser, addUserSuccess, addUserFailed } from './user.actions';
+import {
+  addUser,
+  addUserSuccess,
+  addUserFailed,
+  getUser,
+  getUserSuccess,
+  getUserFailed,
+} from './user.actions';
 import { Byte } from '@angular/compiler/src/util';
 
 export interface UserState {
@@ -12,9 +19,7 @@ export interface UserState {
 export const initialState: UserState = {
   data: '',
   errorMessage: '',
-  user: {
-    firstName: 'me',
-  },
+  user: {},
 };
 
 export const UserReducer = createReducer(
@@ -25,14 +30,32 @@ export const UserReducer = createReducer(
       user,
     };
   }),
-  on(addUserSuccess, (state: UserState, { data,   }) => {
+  on(addUserSuccess, (state: UserState, { data }) => {
     return {
       ...state,
-     
-      data,
+      data: data.data,
+      user: data.user,
     };
   }),
   on(addUserFailed, (state: UserState, { payload }) => {
+    return {
+      ...state,
+      errorMessage: payload,
+    };
+  }),
+  // reducer get user by cin
+  on(getUser, (state: UserState, { cin }) => {
+    return {
+      ...state,
+    };
+  }),
+  on(getUserSuccess, (state: UserState, { user }) => {
+    return {
+      ...state,
+      user,
+    };
+  }),
+  on(getUserFailed, (state: UserState, { payload }) => {
     return {
       ...state,
       errorMessage: payload,
